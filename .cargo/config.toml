@@ -1,0 +1,18 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-rs run --chip STM32F401RETx"
+
+
+[build]
+target = "thumbv7em-none-eabihf"
+rustflags = [
+    "-Z", "emit-stack-sizes",
+
+    "-C", "link-arg=-Tlink.x",
+    "-C", "link-arg=--nmagic",
+
+    "-C", "link-arg=-Tdefmt.x",
+]
+
+[env]
+DEFMT_LOG = "trace"
+

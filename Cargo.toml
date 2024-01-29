@@ -1,0 +1,17 @@
+[package]
+name = "stm32hal_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.3"
+defmt = "0.3.5"
+defmt-rtt = "0.4.0"
+panic-probe = { version = "0.3.1", features = ["print-defmt"] }
+stm32f4xx-hal = { version = "0.20.0", features = ["stm32f401", "sdio-host"] }
+
+[patch.crates-io]
+stm32f4xx-hal = { path = "/home/skygrel19/contributions/stm32f4xx-hal" }
