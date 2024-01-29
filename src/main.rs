@@ -1,6 +1,9 @@
 #![no_std]
 #![no_main]
 
+
+#![allow(unused_variables)]
+
 use cortex_m_rt::entry;
 use defmt::{error, info};
 
@@ -117,6 +120,13 @@ fn main() -> ! {
         }
     }
     info!("Write random data finished!");
+
+    info!("Clock test...");
+
+    for i in 0..10 {
+        cortex_m::asm::delay(clocks.sysclk().to_Hz() / 3 * 2);
+        info!("Delay finished {}", i);
+    }
 
     loop {
         continue;
